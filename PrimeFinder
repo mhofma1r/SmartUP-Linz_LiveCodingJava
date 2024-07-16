@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class PrimeFinder {
+    static void isPrime(int limit) {
+        // Stores all found primes
+        List<Integer> primes = new ArrayList<>();
+
+        // Stores all non-primes found
+        List<Integer> nonePrimes = new ArrayList<>();
+
+        for (int i = 2; i <= limit; i++) {
+            if (!nonePrimes.contains(i)) {
+                primes.add(i);
+                for (int j = i * 2; j <= limit; j += i) {
+                    if (!nonePrimes.contains(j)) {
+                        nonePrimes.add(j);
+                    }
+                }
+            }
+        }
+        System.out.println(primes);
+    }
+}
